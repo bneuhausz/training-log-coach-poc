@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HlmButtonDirective } from '@spartan-ng/helm/button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HlmButtonDirective],
   template: `
-    <h1>Welcome to {{ title() }}!</h1>
+    <h1 class="text-3xl font-bold underline">Welcome to {{ title() }}!</h1>
+    <button hlmBtn>Button</button>
 
     <router-outlet />
   `,
