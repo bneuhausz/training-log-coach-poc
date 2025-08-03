@@ -29,7 +29,7 @@ export class Auth {
   readonly user = computed(() => this.#state().user);
   readonly isAuthenticated = computed(() => !!this.#state().session);
 
-  readonly firstLoad$ = toObservable(this.#state).pipe(
+  readonly initialLoad$ = toObservable(this.#state).pipe(
     filter(state => !state.isLoading),
     take(1)
   );
@@ -42,10 +42,10 @@ export class Auth {
     ),
     tap(({ data, error }) => {
       if (error) {
-        this.#setError(error);
+        this.#handleAuthError(error);
       }
       else if (data.session) {
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       }
       else {
         this.router.navigate(['/confirm-email']);
@@ -61,7 +61,7 @@ export class Auth {
     ),
     tap(({ error }) => {
       if (error) {
-        this.#setError(error);
+        this.#handleAuthError(error);
       }
       else {
         this.router.navigate(['/']);
@@ -70,23 +70,21 @@ export class Auth {
   );
 
   constructor() {
-    this.supabase.auth.onAuthStateChange((event, session) => {
-      this.#setAuthStateAfterLogin(session);
-    });
+    this.supabase.auth.onAuthStateChange((_, session) => this.#setAuthState(session));
 
     this.#signIn$.subscribe();
     this.#signOut$.subscribe();
   }
 
-  #setError(error: AuthError) {
-    this.#state.update(state => ({ ...state, error }));
+  #handleAuthError(error: AuthError) {
+    this.#state.update(state => ({ ...state, error, isLoading: false }));
   }
 
   #setLoading(isLoading: boolean) {
     this.#state.update(state => ({ ...state, isLoading }));
   }
 
-  #setAuthStateAfterLogin(session: Session | null) {
+  #setAuthState(session: Session | null) {
     this.#state.update(state => ({
       ...state,
       user: session?.user ?? null,
