@@ -16,6 +16,21 @@ export const routes: Routes = [
     canActivate: [authGuard()],
   },
   {
+    path: 'profile',
+    loadComponent: () => import('./profile/profile'),
+    canActivate: [authGuard()],
+  },
+  {
+    path: 'athletes',
+    loadComponent: () => import('./athletes/athletes'),
+    canActivate: [authGuard()],
+  },
+  {
+    path: 'create-block',
+    loadComponent: () => import('./create-block/create-block'),
+    canActivate: [authGuard()],
+  },
+  {
     path: '**',
     redirectTo: '',
   }
