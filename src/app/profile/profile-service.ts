@@ -27,7 +27,7 @@ export class ProfileService {
 
   readonly #toggleSelfCoaching$ = this.toggleSelfCoaching$.pipe(
     switchMap((isEnabling) => {
-      const userId = this.auth.user()?.id;
+      const userId = this.auth.user()!.id;
 
       const query = isEnabling
         ? this.supabase.from('coach_athlete').insert({ athlete_id: userId, coach_id: userId })
@@ -54,7 +54,7 @@ export class ProfileService {
   }
 
   #checkSelfCoaching() {
-    const userId = this.auth.user()?.id;
+    const userId = this.auth.user()!.id;
 
     return from(this.supabase
       .from('coach_athlete')
