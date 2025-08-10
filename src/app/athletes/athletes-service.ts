@@ -12,8 +12,12 @@ export class AthletesService {
   });
 
   readonly athletes = computed(() => {
-    const isSafe = !this.#athletes.error() && this.#athletes.hasValue();
-    return isSafe ? this.#athletes.value().data : [];
+    const hasValue = !this.#athletes.error() && this.#athletes.hasValue();
+    if (hasValue && this.#athletes.value()?.data) {
+      const data = this.#athletes.value().data;
+      return data ?? [];
+    }
+    return [];
   });
   readonly athletesLoading = computed(() => this.#athletes.isLoading());
   readonly error = computed(() => this.#athletes.error());
