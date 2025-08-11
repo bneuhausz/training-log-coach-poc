@@ -17,12 +17,17 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    loadComponent: () => import('./profile/profile'),
+    loadComponent: () => import('./user-profile/user-profile'),
     canActivate: [authGuard()],
   },
   {
     path: 'athletes',
     loadComponent: () => import('./athletes/athletes'),
+    canActivate: [authGuard()],
+  },
+  {
+    path: 'athletes/:id',
+    loadComponent: () => import('./athlete/athlete'),
     canActivate: [authGuard()],
   },
   {

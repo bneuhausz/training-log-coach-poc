@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { ProfileService } from "./profile-service";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { UserProfileService } from "./user-profile-service";
 
 @Component({
-  selector: 'app-profile',
-  providers: [ProfileService],
+  selector: 'app-user-profile',
+  providers: [UserProfileService],
   imports: [MatProgressSpinnerModule, MatSlideToggleModule],
   template: `
     <h1>User Profile</h1>
@@ -19,5 +19,5 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Profile {
-  protected readonly profileService = inject(ProfileService);
+  protected readonly profileService = inject(UserProfileService);
 }

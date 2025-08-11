@@ -10,7 +10,7 @@ type ProfileState = {
 };
 
 @Injectable()
-export class ProfileService {
+export class UserProfileService {
   private readonly supabase = inject(Supabase).client;
   private readonly auth = inject(Auth);
 

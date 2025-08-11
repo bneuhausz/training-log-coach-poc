@@ -3,10 +3,11 @@ import { RouterLink, RouterOutlet } from "@angular/router";
 import { Header } from "./header";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, Header, MatSidenavModule, MatListModule, RouterLink],
+  imports: [RouterOutlet, Header, MatSidenavModule, MatListModule, RouterLink, MatCardModule],
   template: `
     <mat-sidenav-container fullscreen class="!bg-slate-200">
       <mat-sidenav #sidenav>
@@ -20,7 +21,9 @@ import { MatListModule } from "@angular/material/list";
       <app-header [sidenav]="sidenav" />
     
       <main>
-        <router-outlet />
+        <mat-card appearance="outlined" class="w-4/5 my-5 mx-auto p-5">
+          <router-outlet />
+        </mat-card>
       </main>
     </mat-sidenav-container>
   `,
