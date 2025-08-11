@@ -10,40 +10,22 @@ import { MatIconModule } from "@angular/material/icon";
   selector: 'app-header',
   imports: [MatButtonModule, MatToolbarModule, MatIconModule],
   template: `
-    <mat-toolbar>
+    <mat-toolbar class="!bg-primary !text-on-primary">
       @if (auth.isAuthenticated()) {
         <button matIconButton (click)="sidenav().open()">
-          <mat-icon id="menu-icon">menu</mat-icon>
+          <mat-icon class="!text-on-primary">menu</mat-icon>
         </button>
       }
-      <span class="spacer"></span>
+      <span class="flex-auto"></span>
       @if (auth.isAuthenticated()) {
         <span>{{ auth.user()?.email }}</span>
-        <button matButton="elevated" id="logout-button" (click)="auth.signOut$.next()">Logout</button>
+        <button matButton="elevated" class="ml-3" (click)="auth.signOut$.next()">Logout</button>
       }
       @else {
         <button matButton="elevated" (click)="login()">Login</button>
       }
     </mat-toolbar>
   `,
-  styles: [`
-    .spacer {
-      flex: 1 1 auto;
-    }
-
-    mat-toolbar {
-      background-color: var(--mat-sys-primary);
-      color: var(--mat-sys-on-primary);
-    }
-
-    #logout-button {
-      margin-left: 10px;
-    }
-
-    #menu-icon {
-      color: var(--mat-sys-on-primary);
-    }
-  `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {

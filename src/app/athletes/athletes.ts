@@ -16,7 +16,7 @@ import { MatCardModule } from "@angular/material/card";
       <mat-card-content>
         <table mat-table [dataSource]="srvc.athletes()" class="mat-elevation-z8">
           <ng-container matColumnDef="display_name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let athlete"> {{ athlete.display_name }} </td>
           </ng-container>
 

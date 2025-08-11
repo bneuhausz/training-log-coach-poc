@@ -7,7 +7,6 @@ import { Layout } from "./layout/layout";
   template: `
     <app-layout />
   `,
-  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App { }

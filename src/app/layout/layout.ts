@@ -8,7 +8,7 @@ import { MatListModule } from "@angular/material/list";
   selector: 'app-layout',
   imports: [RouterOutlet, Header, MatSidenavModule, MatListModule, RouterLink],
   template: `
-    <mat-sidenav-container fullscreen>
+    <mat-sidenav-container fullscreen class="!bg-slate-200">
       <mat-sidenav #sidenav>
         <mat-nav-list (click)="sidenav.close()">
           <a mat-list-item routerLink="/dashboard">Dashboard</a>
