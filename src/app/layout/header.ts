@@ -10,21 +10,23 @@ import { MatIconModule } from "@angular/material/icon";
   selector: 'app-header',
   imports: [MatButtonModule, MatToolbarModule, MatIconModule],
   template: `
-    <mat-toolbar class="!bg-primary !text-on-primary">
+    <mat-toolbar>
       @if (auth.isAuthenticated()) {
         <button matIconButton (click)="sidenav().open()">
-          <mat-icon class="!text-on-primary">menu</mat-icon>
+          <mat-icon>menu</mat-icon>
         </button>
       }
-      <span class="flex-auto"></span>
+      <span class="spacer"></span>
       @if (auth.isAuthenticated()) {
         <span>{{ auth.user()?.email }}</span>
-        <button matButton="elevated" class="ml-3" (click)="auth.signOut$.next()">Logout</button>
+        <button matButton (click)="auth.signOut$.next()">Logout</button>
       }
       @else {
-        <button matButton="elevated" (click)="login()">Login</button>
+        <button matButton (click)="login()">Login</button>
       }
     </mat-toolbar>
+    <button matButton>asd</button>
+    <button matButton="filled">asd2</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

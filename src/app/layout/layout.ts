@@ -19,12 +19,7 @@ import { MatCardModule } from "@angular/material/card";
         </mat-nav-list>
       </mat-sidenav>
       <app-header [sidenav]="sidenav" />
-    
-      <main>
-        <mat-card appearance="outlined" class="w-4/5 my-5 mx-auto p-5">
-          <router-outlet />
-        </mat-card>
-      </main>
+      <router-outlet />
     </mat-sidenav-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
