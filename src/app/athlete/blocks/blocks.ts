@@ -6,9 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   selector: 'app-blocks',
   imports: [MatButtonModule, MatDialogModule],
   template: `
-    <div class="py-4 text-center">
-      <button matButton>New Block</button>
-    </div>
+    <button matButton>New Block</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

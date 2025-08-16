@@ -9,7 +9,7 @@ import { MatCardModule } from "@angular/material/card";
   selector: 'app-layout',
   imports: [RouterOutlet, Header, MatSidenavModule, MatListModule, RouterLink, MatCardModule],
   template: `
-    <mat-sidenav-container fullscreen class="!bg-slate-200">
+    <mat-sidenav-container fullscreen>
       <mat-sidenav #sidenav>
         <mat-nav-list (click)="sidenav.close()">
           <a mat-list-item routerLink="/dashboard">Dashboard</a>

@@ -25,8 +25,6 @@ import { MatIconModule } from "@angular/material/icon";
         <button matButton (click)="login()">Login</button>
       }
     </mat-toolbar>
-    <button matButton>asd</button>
-    <button matButton="filled">asd2</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
